@@ -1,0 +1,35 @@
+{
+    "name": "new-folder",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "regression-headed-firefox": "cypress run --headed --browser firefox --spec 'cypress/e2e/*.feature'",
+        "regression-headless-firefox": "cypress run --headed --browser firefox --spec 'cypress/e2e/*.feature'",
+        "regression-headless": "cypress run -e TAGS=\"@regression\"",
+        "regression-login-headless": "cypress run -e TAGS=\"@login\""
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@bahmutov/cypress-esbuild-preprocessor": "^2.2.4",
+        "cypress": "^14.0.3",
+        "multiple-cucumber-html-reporter": "^3.9.2",
+        "ts-loader": "^9.5.2"
+    },
+    "dependencies": {
+        "@badeball/cypress-cucumber-preprocessor": "^22.0.1"
+    },
+    "cypress-cucumber-preprocessor": {
+        "stepDefinitions": "cypress/support/step_definitions/**/*.js",
+        "html": {
+            "enabled": true,
+            "output": "cypress/reports/cucumber-html/cucumber-report.html"
+        },
+        "messages": {
+            "enabled": true,
+            "output": "cypress/reports/cucumber-ndjson/cucumber-report.ndjson"
+        }
+    }
+}
